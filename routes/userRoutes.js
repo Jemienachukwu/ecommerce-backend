@@ -10,8 +10,9 @@ import {
   getUserById,
   updateUser,
 } from "../controllers/userController.js";
-import { admin, protect } from "../middleware/authMiddleware.js";
-
+// import { admin, protect } from "../middleware/authMiddleware.js";
+const protect = require("../middleware/authMiddleware");
+const admin = require("../middleware/authMiddleware");
 router.route("/").post(registerUser).get(protect, admin, getUser);
 
 router.post("/login", authUser);
