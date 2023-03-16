@@ -2,7 +2,7 @@ import AsyncHandler from "express-async-handler";
 import jwt from "jsonwebtoken";
 import User from "../models/userModel.js";
 
-export const protect = AsyncHandler(async (req, res, next) => {
+const protect = AsyncHandler(async (req, res, next) => {
   let token;
   if (
     req.headers.authorization &&
@@ -26,7 +26,7 @@ export const protect = AsyncHandler(async (req, res, next) => {
   }
 });
 
-export const admin = (req, res, next) => {
+const admin = (req, res, next) => {
   if (req.user && req.user.isAdmin) {
     next();
   } else {
@@ -34,3 +34,5 @@ export const admin = (req, res, next) => {
     throw new Error("Unauthorised Access");
   }
 };
+
+module.exports = { protect, admin };

@@ -9,7 +9,9 @@ import {
   reviewProduct,
   getTopProucts,
 } from "../controllers/productController.js";
-import { admin, protect } from "../middleware/authMiddleware.js";
+// import { protect, admin } from "../middleware/authMiddleware.js";
+const protect = require("../middleware/authMiddleware");
+const admin = require("../middleware/authMiddleware");
 const router = express.Router();
 
 router.route("/").get(getProducts).post(protect, admin, createProduct);
