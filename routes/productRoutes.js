@@ -1,5 +1,4 @@
 import express from "express";
-admin;
 import {
   createProduct,
   deleteProduct,
