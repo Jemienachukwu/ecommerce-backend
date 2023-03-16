@@ -1,6 +1,5 @@
 import express from "express";
-import { admin, protect } from "../middleware/authMiddleware.js";
-
+admin;
 import {
   createProduct,
   deleteProduct,
@@ -10,6 +9,7 @@ import {
   reviewProduct,
   getTopProucts,
 } from "../controllers/productController.js";
+import { admin, protect } from "../middleware/authMiddleware.js";
 const router = express.Router();
 
 router.route("/").get(getProducts).post(protect, admin, createProduct);
