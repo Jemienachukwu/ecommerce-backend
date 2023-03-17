@@ -8,18 +8,18 @@ import {
   reviewProduct,
   getTopProucts,
 } from "../controllers/productController.js";
-import { protect, admin } from "../middleware/authMiddleware.js";
+// import { protect, admin } from "../middleware/authMiddleware.js";
 // var protect = require("../middleware/authMiddleware");
 // const admin = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
-router.route("/").get(getProducts).post(protect, admin, createProduct);
-router.route("/:id/reviews").post(protect, reviewProduct);
+router.route("/").get(getProducts).post(createProduct);
+router.route("/:id/reviews").post(reviewProduct);
 router.get("/top", getTopProucts);
 router
   .route("/:id")
   .get(getProductById)
-  .delete(protect, admin, deleteProduct)
-  .put(protect, admin, updateProduct);
+  .delete(deleteProduct)
+  .put(updateProduct);
 export default router;
