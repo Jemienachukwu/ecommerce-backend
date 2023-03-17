@@ -8,9 +8,9 @@ import {
   updatePaystack,
   updateOrderToDelivered,
 } from "../controllers/orderController.js";
-// import { protect, admin } from "../middleware/authMiddleware.js";
-var protect = require("../middleware/authMiddleware");
-var admin = require("../middleware/authMiddleware");
+import { protect, admin } from "../middleware/authMiddleware.js";
+// var protect = require("../middleware/authMiddleware");
+// const admin = require("../middleware/authMiddleware");
 
 router.route("/").post(protect, addOrderItems).get(protect, admin, getOrders);
 router.route("/myorders").get(protect, getMyOrders);

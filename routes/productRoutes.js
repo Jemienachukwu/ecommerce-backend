@@ -8,9 +8,10 @@ import {
   reviewProduct,
   getTopProucts,
 } from "../controllers/productController.js";
-// import { protect, admin } from "../middleware/authMiddleware.js";
-var protect = require("../middleware/authMiddleware");
-var admin = require("../middleware/authMiddleware");
+import { protect, admin } from "../middleware/authMiddleware.js";
+// var protect = require("../middleware/authMiddleware");
+// const admin = require("../middleware/authMiddleware");
+
 const router = express.Router();
 
 router.route("/").get(getProducts).post(protect, admin, createProduct);
