@@ -9,17 +9,25 @@ import orderRoutes from "./routes/orderRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
 import path from "path";
 import morgan from "morgan";
+import cors from "cors";
+
 dotenv.config();
 
 connectDB();
 
 const app = express();
+app.options("*", cors());
 
 app.use(function (req, res, next) {
-  res.header(
-    "Access-Control-Allow-Origin",
-    "https://techshop-fiqo.onrender.com"
-  );
+  // res.header(
+  //   "Access-Control-Allow-Origin",
+  //   "https://techshop-fiqo.onrender.com"
+  // );
+  // res.header(
+  //   "Access-Control-Allow-Headers",
+  //   "Origin, X-Requested-With, Content-Type, Accept"
+  // );
+  res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
